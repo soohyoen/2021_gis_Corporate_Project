@@ -1,0 +1,10 @@
+{% extends "base.html"  %}
+{% block content %}
+    <h1>시험 성적 확인하기</h1>
+    <p>이름을 클릭하세요.</p>
+    <ul>
+        {% for key, value in template_students | dictsort %}
+            <li><a href="/student/{{ key }}">{{ value["name"] }}</a></li>
+        {% endfor%}
+    </ul>
+{% endblock %}
