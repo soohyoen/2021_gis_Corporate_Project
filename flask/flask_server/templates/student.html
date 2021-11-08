@@ -1,0 +1,9 @@
+{% extends "base.html"  %}
+{% block content %}
+    <h2>{{ template_name }} 님의 성적</h2>
+    <ul>
+        {% for key, value in template_score.items() %}
+            <li>{{ key }} : {{ value }}</li>
+        {% endfor%}
+    </ul>
+{% endblock %}
