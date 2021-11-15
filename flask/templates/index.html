@@ -1,6 +1,23 @@
-<form action = "{{url_for('multi_upload_file')}}" method="post"
-      method = 'post' enctype="multipart/form-data">
-  <input type="file" name="file[]"
-         multiple="multiple">
-  <input type="submit">
-</form>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>인테리어 계약서 분석</title>
+</head>
+<body>
+       <div class="container">
+              <h1>인테리어 계약서 분석 서비스</h1>
+              <div>
+                     <p>PDF 혹은 이미지 파일을 업로드 해주세요.</p>
+                     <P>이미지 파일의 경우, 순서를 신경써서 업로드 해주시기 바랍니다.</P>
+                     <br>
+                     <form action = "/api/contract-analysis" method="post" method = 'post' enctype="multipart/form-data">
+                            <input type="file" name="file[]" multiple="multiple">
+                            <input type="submit">
+                     </form>
+              </div>
+       </div>
+</body>
+</html>
