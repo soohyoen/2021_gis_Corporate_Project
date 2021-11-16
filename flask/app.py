@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template
 import asyncio
+import os
+import json
 
-from ocr import ocr_task, merge, split_article
-from model import contract_analysis
+from src.ocr import ocr_task, merge, split_article
+from src.model import analysis
 
 app = Flask(__name__)
 
@@ -10,10 +12,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-
-@app.route("/api/contract-analysis", methods=["POST"])
+@app.route("/api/analysis/contract", methods=["POST"])
 def contract_analysis():
-    print('/api/contract-analysis 호출')
+    print('/api/analysis/contract 호출')
 
     upload = request.files.getlist("file[]")
 
@@ -24,14 +25,20 @@ def contract_analysis():
     # splited_contract_doc = loop.run_until_complete(ocr_task(upload))
     # loop.close()
 
+    ocr_json = []
+    for filename in os.listdir('./public/tmp'):
+        with open(f'./public/tmp/{filename}', 'r', encoding="UTF-8") as f:
+            ocr_json.append(json.load(f))
+    # print(ocr_json)
+    
     # 로드 json 결과물 (Clova OCR 에서 정상적으로 결과가 들어왔다 치고)
-    # full_contract_doc = merge(splited_contract_doc)
-    # contract_articles = split_article(full_contract_doc)
-    # model_predict = contract_analysis(contract_articles)
+    full_contract_doc = merge(ocr_json)
+    articles = split_article(full_contract_doc)
+    model_predict = analysis(articles)
 
-    print(splited_contract_doc)
+    print(model_predict)
 
     return render_template('check.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=5000)
