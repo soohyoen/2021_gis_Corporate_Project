@@ -1,10 +1,19 @@
 import pandas as pd
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.text import tokenizer_from_json
 from konlpy.tag import Hannanum
 
-MAX_LEN = 45
-STOP_WORDS = []
+model = load_model('./ml/model')
+with open('./ml/tokenizer.json') as f:
+    data = json.load(f)
+    tokenizer = tokenizer_from_json(data)
+MAX_LEN = 35
+STOP_WORDS = ['도', '는', '다', '의', '가', '이', '은', '한', '에', '하', '고', 
+            '을', '를', '인', '듯', '과', '와', '네', '들', '듯', '지', '임',
+            '만', '겜', '되', '음', '면', '제', '항', '저', '및', '으로', '어',
+            '등', '이나', '또는', '보', 'ㄴ', '어서', '늘', '모든', '대', '에서', '갑']
 
 def predict_test(new_sentence):
     hannanum = Hannanum()
