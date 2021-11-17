@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import asyncio
 import os
 import json
@@ -36,9 +36,12 @@ def contract_analysis():
     articles = split_article(full_contract_doc)
     model_predict = analysis(articles)
 
-    print(model_predict)
+    not_include_list = list({i for i in range(1,21)} - model_predict)
 
-    return render_template('check.html')
+    print(model_predict)
+    print(not_include_list)
+
+    return jsonify({"notIncludeArticle": not_include_list})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
