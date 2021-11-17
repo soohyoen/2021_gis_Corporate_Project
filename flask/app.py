@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 import asyncio
 import os
 import json
@@ -7,6 +8,9 @@ from src.ocr import ocr_task, merge, split_article
 from src.model import analysis
 
 app = Flask(__name__)
+CORS(app, resource={
+    '/api/*': {'origin': '*'}
+})
 
 @app.route('/')
 def index():
