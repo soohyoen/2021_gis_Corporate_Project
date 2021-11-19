@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- tailwindcss -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    
+    <script src="index.js" defer></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div class="leading-loose">
+                <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+                    <p class="text-gray-800 font-medium mb-5 text-center">인테리어 계약서 분석</p>
+                    
+                    <p class="mt-8 text-gray-400 text-base font-medium">사용법</p>
+                    <div class="mt-2 space-y-4">
+                        <p>다음 사항에 주의하여 이미지 혹은 PDF 파일을  업로드 해주세요.</p>
+                        <ul class="list-disc space-y-2">
+                            <li class="flex items-start">
+                                <span class="h-6 flex items-center sm:h-7">
+                                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <p class="ml-2">
+                                    현재 시스템은
+                                    <code class="text-sm font-bold text-gray-900">jpg, jpeg, png, pdf</code>
+                                    파일을 받습니다.
+                                </p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-6 flex items-center sm:h-7">
+                                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <p class="ml-2">
+                                    여러 이미지 혹은 파일을 업로드 해야할 경우, 파일 이름에 
+                                    <code class="text-sm font-bold text-gray-900">번호</code>
+                                    을 매겨주세요. (예시: 1.jpg, 2.jpg, ...)
+                                </p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-6 flex items-center sm:h-7">
+                                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <p class="ml-2">
+                                    이미지 업로드 후
+                                    <code class="text-sm font-bold text-gray-900">제출</code>
+                                    버튼을 눌러주세요.
+                                </p>
+                            </li>
+                        </ul>
+                        <p>시스템이 분석을 마칠 때까지 최대 1분의 시간이 걸립니다. 잠시만 기다려주세요.</p>
+                    </div> 
+        
+                    <p class="mt-8 text-gray-400 text-base font-medium">계약서 업로드</p>
+                    <div class="mt-2">
+                        <div class="text-base border rounded px-4 py-3">
+                            <input type="file" name="file[]" multiple>
+                        </div>
+                        <div class="mt-4">
+                            <button class="px-4 py-1 text-white font-light bg-gray-300 rou tracking-widernded" type="submit" onclick="return submitFile()">제출</button>
+                        </div>
+                    </div>    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
